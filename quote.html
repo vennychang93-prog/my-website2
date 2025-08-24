@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>速博樂環保清潔有限公司</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="Cleaning Company Website" />
+  <meta name="description" content="Cleaning Company Website" />
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
+
+  <!-- CSS Libraries -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+  <!-- Custom Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Header Start -->
+    <div class="header home">
+      <div class="container-fluid">
+        <nav class="navbar-sticky">
+          <div class="header-top row align-items-center">
+            <div class="col-lg-3">
+              <div class="brand">
+                <img src="img/Desain_tanpa_judul_6_-removebg-preview.png" alt="logo" width="150"/>
+                <a href="index.html">
+                  <div class="text-bold">速博樂環保清潔有限公司</div>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="navbar navbar-expand-lg bg-light navbar-light">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                  <div class="navbar-nav ml-auto">
+                    <a href="index.html" class="nav-item nav-link">首頁</a>
+                    <a href="about.html" class="nav-item nav-link">關於我們</a>
+                    <a href="service.html" class="nav-item nav-link">服務項目</a>
+                    <a href="contact.html" class="nav-item nav-link">聯絡我們</a>
+                    <a href="quote.html" class="btn active">Get A Quote</a>
+                  </div>
+                </div>
+              </div>  
+            </div>           
+          </div>         
+        </nav>
+        <!-- Order Form Start -->
+    <div class="container-my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form id="order-form" action="https://formspree.io/f/mblkvknd" method="POST" class="p-4 bg-light rounded shadow">
+            <h2 class="text-center mb-4">訂單表單</h2>
+
+            <div class="form-group">
+              <label for="nama">姓名：</label>
+              <input type="text" id="nama" name="姓名" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="jenis">服務類型：</label>
+              <select id="jenis" name="服務類型" class="form-control" required>
+                <option value="">請選擇服務</option>
+                <option value="消毒服務">消毒服務</option>
+                <option value="除蟲服務">除蟲服務</option>
+                <option value="裝潢後清潔">裝潢後清潔</option>
+                <option value="商業清潔">商業清潔</option>
+                <option value="環境顧問">環境顧問</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact">電話 / Line：</label>
+              <input type="text" id="contact" name="電話_Line" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="location">地點：</label>
+              <input type="text" id="location" name="地點" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="note">備註：</label>
+              <textarea id="note" name="備註" class="form-control" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">提交訂單</button>
+            <div id="success-message" class="text-success text-center mt-3" style="display:none;">
+              ✅ 訂單已成功提交，我們將會盡快聯絡您！
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      </div>
+        <!-- Order Form End -->
+    </div>
+    <!-- Header End -->
+
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+  <!-- Formspree Script -->
+  <script>
+    const form = document.getElementById('order-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset(); // Kosongkan semua field
+          successMessage.style.display = 'block'; // Tampilkan pesan sukses
+        } else {
+          alert('提交失敗，請稍後再試。');
+        }
+      } catch (error) {
+        alert('提交失敗，請檢查網路連線。');
+      }
+    });
+  </script>
+</body>
+</html>
